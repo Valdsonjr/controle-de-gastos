@@ -1,0 +1,100 @@
+cabal-version:      2.4
+name:               controle-de-gastos
+version:            0.1.0.0
+synopsis:           app de controle de gastos
+
+-- A longer description of the package.
+-- description:
+homepage:
+
+-- A URL where users can report bugs.
+-- bug-reports:
+license:            ISC
+license-file:       LICENSE
+author:             Valdson Francisco Silva Santos Júnior
+maintainer:         valdsonfrancisco.jr@gmail.com
+
+-- A copyright notice.
+-- copyright:
+-- category:
+extra-source-files: 
+    CHANGELOG.md
+    README.md
+
+
+common shared
+    default-language: Haskell2010
+    build-depends:
+        base ^>=4.17.2.1,
+    ghc-options:
+        -Wall
+        -Wunused-packages
+        -Widentities
+        -Wincomplete-record-updates
+        -Wincomplete-uni-patterns
+        -Wpartial-fields
+        -Wredundant-constraints
+
+-- library domain
+--     import:           shared
+--     exposed-modules:
+--         Data.Audit,
+--         Data.EmailAddress,
+--         Data.Money,
+--         Data.Money.Currencies,
+--         Data.Password,
+--         Data.Transaction,
+--         Data.Transaction.Id,
+--         Data.Transaction.Tag, 
+--         Data.User,
+--         Data.User.Id,
+--         Pages.Audits,
+--         Pages.Transactions
+        
+--     -- Modules included in this library but not exported.
+--     other-modules:
+--         Pages.Internal
+
+--     -- LANGUAGE extensions used by modules in this package.
+--     -- other-extensions:
+--     build-depends:
+--         -- array,
+--         -- uuid,
+--         aeson,   
+--         bytestring,
+--         containers,
+--         format-numbers,
+--         lucid2-htmx,
+--         lucid2,
+--         regex-tdfa,
+--         text,
+--         time,
+--         validation-selective
+--     hs-source-dirs:   lib
+
+executable controle-de-gastos
+    import:           shared
+    main-is:          Main.hs
+
+    -- Modules included in this executable, other than Main.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:
+        domain,
+        scotty
+        
+    hs-source-dirs:   app
+
+-- test-suite controle-de-gastos-test
+--     import:           shared
+--     type:             exitcode-stdio-1.0
+--     hs-source-dirs:   test
+--     main-is:          Main.hs
+--     build-depends:    
+--         domain,
+--         hspec,
+--         lucid2,
+--         text,
+--         time
